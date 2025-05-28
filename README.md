@@ -1,5 +1,11 @@
 A comprehensive platform for users to create accounts, share product reviews with ratings, categorize reviews, and interact with posts through voting and commenting. The application includes premium content with payment integration and admin moderation.
 
+## Project name : Review Portal 
+### Live Link : 
+```bash
+https://critiqo-frontend.vercel.app
+```
+
 ## Features
 - User Authentication: Registration, login, and JWT-based session management
 - Review Management: Create, edit, and delete product reviews with ratings
@@ -32,6 +38,12 @@ PostgreSQL
 Cloudinary account
 
 ## Getting Started
+Clone The git
+```bash
+npm Install
+```
+
+ADD .ENV File 
 
 First, run the development server:
 
