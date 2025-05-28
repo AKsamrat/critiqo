@@ -1,6 +1,6 @@
 A comprehensive platform for users to create accounts, share product reviews with ratings, categorize reviews, and interact with posts through voting and commenting. The application includes premium content with payment integration and admin moderation.
 
-###Features
+## Features
 - User Authentication: Registration, login, and JWT-based session management
 - Review Management: Create, edit, and delete product reviews with ratings
 - Categories: Organize reviews into different product categories
@@ -9,8 +9,9 @@ A comprehensive platform for users to create accounts, share product reviews wit
 - Admin Moderation: Review approval workflow and content moderation
 - Image Uploads: Cloudinary integration for image storage
 - Search & Filter: Find reviews by keywords, categories, ratings, and more
-##Technology Stack
-#Backend
+  
+## Technology Stack
+# Backend
 Node.js & Express.js: API framework
 PostgreSQL: Database
 Prisma: ORM for database operations
