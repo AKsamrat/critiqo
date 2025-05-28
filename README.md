@@ -10,8 +10,14 @@ A comprehensive platform for users to create accounts, share product reviews wit
 - Image Uploads: Cloudinary integration for image storage
 - Search & Filter: Find reviews by keywords, categories, ratings, and more
   
-## Technology Stack
-# Backend
+# Technology Stack
+## FrontEnd
+- Node js
+- React
+- Next js
+- TypeScript
+  
+## Backend
 Node.js & Express.js: API framework
 PostgreSQL: Database
 Prisma: ORM for database operations
