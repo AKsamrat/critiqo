@@ -45,34 +45,34 @@ const AdminDashBoardPage = async () => {
 
                 {/* Total Reviews */}
                 <div className="bg-blue-50 rounded-lg shadow p-6 h-48">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex flex-col lg:flex-row items-center justify-between mb-4">
                     <h3 className="text-gray-600 text-sm font-medium">
                       Total Reviews
                     </h3>
-                    <div className="bg-blue-100 rounded-full p-2">
+                    <div className="bg-blue-100 hidden md:flex rounded-full p-2">
                       <Star size={20} className="text-blue-600" />
                     </div>
                   </div>
                   <div className="flex items-baseline">
-                    <p className="text-2xl font-bold text-gray-800">
+                    <p className="text-2xl text-center font-bold text-gray-800">
                       {reviewData?.length}
                     </p>
                   </div>
-                  <div className="flex mt-4 pt-4 border-t border-blue-200 justify-between">
-                    <div className="flex flex-col items-center">
-                      <span className="text-xs text-gray-500">Published</span>
+                  <div className="flex flex-col lg:flex-row mt-4 pt-1 lg:pt-4 border-t border-blue-200 justify-between">
+                    <div className="flex flex-row lg:flex-col items-center">
+                      <span className="text-xs text-gray-500 pr-1">Published</span>
                       <span className="text-sm font-medium text-green-600">
                         {reviewCounts?.published}
                       </span>
                     </div>
-                    <div className="flex flex-col items-center">
-                      <span className="text-xs text-gray-500">Pending</span>
+                    <div className="flex flex-row lg:flex-col items-center">
+                      <span className="text-xs text-gray-500 pr-1">Pending</span>
                       <span className="text-sm font-medium text-yellow-600">
                         {reviewCounts?.pending}
                       </span>
                     </div>
-                    <div className="flex flex-col items-center">
-                      <span className="text-xs text-gray-500">Unpublished</span>
+                    <div className="flex flex-row lg:flex-col items-center">
+                      <span className="text-xs text-gray-500 pr-1">Unpublished</span>
                       <span className="text-sm font-medium text-red-600">
                         {reviewCounts?.unpublished}
                       </span>
@@ -82,7 +82,7 @@ const AdminDashBoardPage = async () => {
 
                 {/* Premium Review Earnings */}
                 <div className="bg-green-50 rounded-lg shadow p-6 h-48">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex flex-col lg:flex-row items-center justify-between mb-4">
                     <h3 className="text-gray-600 text-sm font-medium">
                       Premium Review Earnings
                     </h3>

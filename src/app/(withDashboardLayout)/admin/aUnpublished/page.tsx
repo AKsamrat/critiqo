@@ -1,5 +1,5 @@
 
-import UnpublishedReview from "@/components/modules/admin/review/UnpublishedReview";
+import UnPublishedReview from "@/components/modules/admin/review/UnpublishedReview";
 import { getAllReviewAdmin } from "@/services/AdminReview";
 import React from "react";
 
@@ -10,7 +10,7 @@ const UnPublishedReviewPage = async () => {
   let content = null;
 
   if (reviews?.length > 0) {
-    content = <UnpublishedReview reviewData={reviews} />;
+    content = <UnPublishedReview />;
   } else {
     content = <p>There are no Data</p>;
   }

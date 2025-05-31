@@ -10,7 +10,7 @@ const PublishedReviewPage = async () => {
   let content = null;
 
   if (reviews?.length > 0) {
-    content = <PublishedReview reviewData={reviews} />;
+    content = <PublishedReview />;
   } else {
     content = <p>There are no Data</p>;
   }

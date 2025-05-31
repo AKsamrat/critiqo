@@ -4,15 +4,17 @@ import { useState } from "react";
 import { Check, X, Clock } from "lucide-react";
 
 import TotalCount from "./TotalCount";
-import ReviewTable from "./ReviweTable";
+
 import { TAdminReview } from "@/types/adminreview";
 import { reviewUpdateByAdmin } from "@/services/AdminReview";
 import { toast } from "sonner";
+import { useRouter } from 'next/navigation';
+
 
 const ReviewSection = ({ reviewData }: { reviewData: TAdminReview[] }) => {
   const [reviews, setReviews] = useState<TAdminReview[]>(reviewData);
 
-
+  const router = useRouter();
   // Format date string
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -31,10 +33,10 @@ const ReviewSection = ({ reviewData }: { reviewData: TAdminReview[] }) => {
           prevReviews.map((review: any) =>
             review.id === reviewId
               ? {
-                  ...review,
-                  status: newStatus,
-                  updatedAt: new Date().toISOString(),
-                }
+                ...review,
+                status: newStatus,
+                updatedAt: new Date().toISOString(),
+              }
               : review
           )
         );
@@ -42,13 +44,13 @@ const ReviewSection = ({ reviewData }: { reviewData: TAdminReview[] }) => {
       } else {
         toast.error("Failed to update review status");
       }
-    } catch (error : any) {
+    } catch (error: any) {
       console.error("Error updating status:", error.message);
       toast.error("Something went wrong while changing review status");
     }
   };
 
-  
+
 
   // Badge component
   const Badge = ({ status }: { status: string }) => {
@@ -61,9 +63,8 @@ const ReviewSection = ({ reviewData }: { reviewData: TAdminReview[] }) => {
 
     return (
       <span
-        className={`px-2 py-1 text-xs font-medium rounded-full ${
-          colors[status] || "bg-gray-100 text-gray-700"
-        }`}
+        className={`px-2 py-1 text-xs font-medium rounded-full ${colors[status] || "bg-gray-100 text-gray-700"
+          }`}
       >
         {status.charAt(0).toUpperCase() + status.slice(1).toLowerCase()}
       </span>
@@ -97,7 +98,7 @@ const ReviewSection = ({ reviewData }: { reviewData: TAdminReview[] }) => {
                     new Date(a.createdAt).getTime()
                 )
                 .slice(0, 4)
-                .map((review ) => (
+                .map((review) => (
                   <div
                     key={review.id}
                     className="p-2 border border-gray-100 rounded-md"
@@ -129,14 +130,30 @@ const ReviewSection = ({ reviewData }: { reviewData: TAdminReview[] }) => {
                     </div>
                   </div>
                 ))}
-            
+
             </div>
           </div>
         </div>
 
         {/* Review Table */}
-        <div className="bg-white rounded-lg shadow">
-          <ReviewTable reviewData={reviews} />
+        <div className="bg-white rounded-lg shadow p-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Published Reviews Card */}
+          <div
+            onClick={() => router.push('/admin/aPublished')}
+            className="cursor-pointer border border-green-400 rounded-xl p-6 shadow hover:shadow-lg transition duration-300 bg-green-50"
+          >
+            <h2 className="text-lg font-semibold text-green-700">Published Reviews</h2>
+            <p className="text-sm text-green-600 mt-2">View all published reviews.</p>
+          </div>
+
+          {/* Unpublished Reviews Card */}
+          <div
+            onClick={() => router.push('/admin/aUnpublished')}
+            className="cursor-pointer border border-yellow-400 rounded-xl p-6 shadow hover:shadow-lg transition duration-300 bg-yellow-50"
+          >
+            <h2 className="text-lg font-semibold text-yellow-700">Unpublished Reviews</h2>
+            <p className="text-sm text-yellow-600 mt-2">View all unpublished (draft) reviews.</p>
+          </div>
         </div>
       </div>
     </div>
