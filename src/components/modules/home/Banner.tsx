@@ -76,7 +76,7 @@ const CapterraSearch = () => {
   }, [searchQuery]);
 
   return (
-    <div className="max-w-7xl mx-auto  mb-12 px-2">
+    <div className="max-w-7xl mx-auto  mb-12 pl-2 pr-1">
       <div className="flex justtify-between gap-7 mt-4">
 
         <CategorySidebar />
@@ -139,7 +139,7 @@ const CapterraSearch = () => {
           </div>
 
           {/* Right side images grid */}
-          <div className=" col-span-1 gap-4 p-8 mt-2">
+          <div className=" col-span-1 gap-4 pt-6 mt-2 ml-4">
             {/* Top left image */}
             <div className=" rounded-lg overflow-hidden ">
               <Image

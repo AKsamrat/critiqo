@@ -96,7 +96,7 @@ const AllReviews = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 bg-gradient-to-b from-purple-50 to-white">
+    <div className="max-w-7xl mx-auto px-1 py-12 bg-gradient-to-b from-purple-50 to-white">
       {/* Festive Header */}
       <div className="mb-10 text-center">
         <h1 className="text-3xl font-bold text-purple-800 mb-2 flex items-center justify-center gap-2">
@@ -240,11 +240,10 @@ const AllReviews = () => {
           <button
             onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
             disabled={currentPage === 1 || loading}
-            className={`px-4 py-2 rounded-lg font-medium flex items-center ${
-              currentPage === 1
-                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                : "bg-purple-100 text-purple-700 hover:bg-purple-200 transition-colors"
-            }`}
+            className={`px-4 py-2 rounded-lg font-medium flex items-center ${currentPage === 1
+              ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+              : "bg-purple-100 text-purple-700 hover:bg-purple-200 transition-colors"
+              }`}
           >
             Prev
           </button>
@@ -258,11 +257,10 @@ const AllReviews = () => {
           <button
             onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
             disabled={currentPage === totalPages || totalPages === 0 || loading}
-            className={`px-4 py-2 rounded-lg font-medium flex items-center ${
-              currentPage === totalPages || totalPages === 0
-                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                : "bg-purple-600 text-white hover:bg-purple-700 transition-colors"
-            }`}
+            className={`px-4 py-2 rounded-lg font-medium flex items-center ${currentPage === totalPages || totalPages === 0
+              ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+              : "bg-purple-600 text-white hover:bg-purple-700 transition-colors"
+              }`}
           >
             Next
           </button>

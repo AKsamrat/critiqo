@@ -29,19 +29,10 @@ export const getAllReview = async () => {
 
 
 
-// export const getAllReview = async (page?: string, limit?: string, query?: { [key: string]: string | string[] | undefined }) => {
+// export const getAllReviewDashboard = async (page?: string, limit?: string, query?: { [key: string]: string | string[] | undefined }) => {
 //   try {
 //     const params = new URLSearchParams();
-//     if (query?.price) {
-//       params.append("minPrice", "0")
-//       params.append("maxPrice", query?.price.toString())
-//     }
-//     if (query?.brand) {
-//       params.append("brands", query?.brand.toString())
-//     }
-//     if (query?.category) {
-//       params.append("categories", query?.category.toString())
-//     }
+
 //     // if (query?.search) {
 //     //   params.append("ratings", query?.rating.toString())
 //     // }

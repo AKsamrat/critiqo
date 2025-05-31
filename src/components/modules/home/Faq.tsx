@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import img1 from "../../../assets/faq2.png";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { AlertTriangle, ChevronDown } from "lucide-react";
+import img1 from "../../../assets/faq2.png";
 
 const faqs = [
   {
@@ -40,55 +41,74 @@ const FaqSection = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto mt-6 pl-1.5 bg-gray-100 shadow-2xl my-10">
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6  rounded-md shadow">
-        {/* Left: FAQ */}
+    <section className="max-w-7xl mx-auto px-1.5 py-12 bg-white">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        {/* FAQ Section */}
         <div>
-          <h2 className="text-3xl font-bold mb-6">
+          <h2 className="text-4xl font-bold mb-6 text-gray-900">
             Frequently Asked Questions
           </h2>
-          {faqs.map((faq, index) => (
-            <div key={index} className="mb-4 border-b pb-3 border-blue-200">
-              <button
-                onClick={() => toggleFaq(index)}
-                className="text-left w-full text-lg font-medium focus:outline-none"
-              >
-                {faq.question}
-              </button>
-              {openIndex === index && (
-                <p className="mt-2 text-gray-600 transition-all duration-300">
-                  {faq.answer}
-                </p>
-              )}
+
+          {!Array.isArray(faqs) || faqs.length === 0 ? (
+            <div className="flex items-center gap-2 text-red-600">
+              <AlertTriangle className="h-5 w-5" />
+              <p>No FAQs available or data is invalid.</p>
             </div>
-          ))}
+          ) : (
+            faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="mb-4 border-b border-gray-200 pb-4 transition-all"
+              >
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="flex justify-between items-center w-full text-left text-lg font-medium text-gray-800 hover:text-indigo-600 transition"
+                >
+                  {faq.question}
+                  <ChevronDown
+                    className={`h-5 w-5 transform transition-transform duration-300 ${openIndex === index ? "rotate-180 text-indigo-600" : ""
+                      }`}
+                  />
+                </button>
+
+                {openIndex === index && (
+                  <motion.p
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="mt-3 text-gray-600 text-base"
+                  >
+                    {faq.answer}
+                  </motion.p>
+                )}
+              </div>
+            ))
+          )}
         </div>
 
-        {/* Right: Image */}
+        {/* Animated Image Section */}
         <motion.div
-          initial={{ x: -10 }}
-          animate={{ x: 10 }}
-          whileHover={{ x: 0 }} // Stops moving on hover
+          initial={{ x: 10 }}
+          animate={{ x: -10 }}
+          whileHover={{ x: 0 }}
           transition={{
             repeat: Infinity,
             repeatType: "reverse",
-            duration: 1.5,
+            duration: 1.8,
             ease: "easeInOut",
           }}
-          className="flex flex-col items-center text-center"
+          className="flex justify-center"
         >
-          <div className="flex items-center justify-center">
-            <Image
-              src={img1} // Replace with your actual image
-              alt="Review illustration"
-              width={400}
-              height={600}
-              className="rounded-lg  object-contain"
-            />
-          </div>
+          <Image
+            src={img1}
+            alt="FAQ illustration"
+            width={420}
+            height={500}
+            className="rounded-xl object-contain "
+          />
         </motion.div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

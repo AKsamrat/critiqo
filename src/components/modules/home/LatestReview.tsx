@@ -15,7 +15,7 @@ const LatestReview = async () => {
     content = <p>No reviews found!</p>;
   } else {
     content = (
-      <div className="p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="p-1 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {reviewsData
           .filter((item: TReview) => item.status === "PUBLISHED")
           .sort((a: TReview, b: TReview) => {
@@ -32,7 +32,7 @@ const LatestReview = async () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto py-4">
+    <div className="max-w-7xl mx-auto py-4 pl-1">
       <div className="text-center py-4">
         <h1 className="text-3xl py-5 font-bold">Latest Review</h1>
       </div>

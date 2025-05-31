@@ -116,10 +116,10 @@ const TopCategories = () => {
 
   return (
     <div className="  sm:p-4 md:p-6 lg:my-20 bg-gray-100 rounded-md shadow-md sm:shadow-lg md:shadow-2xl shadow-gray-200">
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-4 pl-4">
-        Top Categories
-      </h2>
       <div className="relative overflow-hidden max-w-7xl mx-auto px-2">
+        <h2 className="text-xl  sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-4 ">
+          Top Categories
+        </h2>
         <Slider {...settings}>
           {categories.map((cat, index) => (
             <div key={index} className="text-center px-1 sm:px-2 md:px-3">

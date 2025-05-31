@@ -17,8 +17,8 @@ export default function Login() {
   const { setIsLoading } = useUser();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState<LoginForm>({
-    email: "",
-    password: "",
+    email: "admin@gmail.com",
+    password: "password23",
   });
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -113,6 +113,7 @@ export default function Login() {
                   placeholder="Email address"
                   value={formData.email}
                   onChange={handleChange}
+                  defaultValue="admin1@gmail.com"
                 />
               </div>
 
@@ -130,6 +131,7 @@ export default function Login() {
                   placeholder="Password"
                   value={formData.password}
                   onChange={handleChange}
+                  defaultValue="password23"
                 />
                 <button
                   type="button"

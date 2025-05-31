@@ -11,6 +11,7 @@ import { getAllReviewAdmin } from "@/services/AdminReview";
 import { TAdminReview } from "@/types/adminreview";
 import { TReview } from "@/types/review";
 import { getTotalEarning } from "@/services/Payment";
+import DashboardCharts from "./DashboardCharts";
 
 const AdminDashBoardPage = async () => {
   const data = await getAllReviewAdmin();
@@ -32,95 +33,85 @@ const AdminDashBoardPage = async () => {
   );
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-50">
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Main Dashboard Content */}
-        <main className="flex-1 overflow-y-auto bg-gray-100 p-6">
+        <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
           {/* Metric Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            {/* Total Reviews */}
-            <div className="bg-white rounded-lg shadow p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-gray-500 text-sm font-medium">
-                  Total Reviews
-                </h3>
-                <div className="bg-blue-100 rounded-full p-2">
-                  <Star size={20} className="text-blue-600" />
-                </div>
-              </div>
-              <div className="flex items-baseline">
-                <p className="text-2xl font-bold text-gray-900">
-                  {reviewData?.length}
-                </p>
-              </div>
-              <div className="flex mt-4 pt-4 border-t border-gray-100 justify-between">
-                <div className="flex flex-col items-center">
-                  <span className="text-xs text-gray-500">Published</span>
-                  <span className="text-sm font-medium text-green-600">
-                    {reviewCounts?.published}
-                  </span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-xs text-gray-500">Pending</span>
-                  <span className="text-sm font-medium text-yellow-600">
-                    {reviewCounts?.pending}
-                  </span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-xs text-gray-500">Unpublished</span>
-                  <span className="text-sm font-medium text-red-600">
-                    {reviewCounts?.unpublished}
-                  </span>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2  gap-6 mb-6">
+            <div className=" flex flex-col">
+              <div className="grid grid-cols-2 gap-4">
 
-            {/* Premium Review Earnings */}
-
-            <div className="bg-white rounded-lg shadow p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-gray-500 text-sm font-medium">
-                  Premium Review Earnings
-                </h3>
-                <div className="bg-green-100 rounded-full p-2">
-                  <DollarSignIcon size={20} className="text-green-600" />
-                </div>
-              </div>
-              <div className="flex items-baseline">
-                <p className="text-2xl font-bold text-gray-900">
-                  ${Number(totalEarning).toFixed(2)}
-                </p>
-              </div>
-              {/* <div className="mt-4 h-16">
-                <div className="flex justify-between h-full items-end">
-                  {dashboardData.monthlyEarnings.map((item, index) => (
-                    <div key={index} className="flex flex-col items-center">
-                      <div
-                        className="bg-green-500 w-8 rounded-t"
-                        style={{
-                          height: `${
-                            (item.amount /
-                              Math.max(
-                                ...dashboardData.monthlyEarnings.map(
-                                  (i) => i.amount
-                                )
-                              )) *
-                            100
-                          }%`,
-                        }}
-                      ></div>
-                      <span className="text-xs mt-1">{item.month}</span>
+                {/* Total Reviews */}
+                <div className="bg-blue-50 rounded-lg shadow p-6 h-48">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-gray-600 text-sm font-medium">
+                      Total Reviews
+                    </h3>
+                    <div className="bg-blue-100 rounded-full p-2">
+                      <Star size={20} className="text-blue-600" />
                     </div>
-                  ))}
+                  </div>
+                  <div className="flex items-baseline">
+                    <p className="text-2xl font-bold text-gray-800">
+                      {reviewData?.length}
+                    </p>
+                  </div>
+                  <div className="flex mt-4 pt-4 border-t border-blue-200 justify-between">
+                    <div className="flex flex-col items-center">
+                      <span className="text-xs text-gray-500">Published</span>
+                      <span className="text-sm font-medium text-green-600">
+                        {reviewCounts?.published}
+                      </span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <span className="text-xs text-gray-500">Pending</span>
+                      <span className="text-sm font-medium text-yellow-600">
+                        {reviewCounts?.pending}
+                      </span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <span className="text-xs text-gray-500">Unpublished</span>
+                      <span className="text-sm font-medium text-red-600">
+                        {reviewCounts?.unpublished}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div> */}
+
+                {/* Premium Review Earnings */}
+                <div className="bg-green-50 rounded-lg shadow p-6 h-48">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-gray-600 text-sm font-medium">
+                      Premium Review Earnings
+                    </h3>
+                    <div className="bg-green-100 rounded-full p-2">
+                      <DollarSignIcon size={20} className="text-green-600" />
+                    </div>
+                  </div>
+                  <div className="flex items-baseline">
+                    <p className="text-2xl font-bold text-gray-800">
+                      ${Number(totalEarning).toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Charts Section */}
+              <div className="mt-6">
+                <DashboardCharts
+                  reviewCounts={reviewCounts}
+                  totalEarning={totalEarning}
+                  totalReviews={reviewData?.length || 0}
+                />
+              </div>
             </div>
 
             {/* Top Premium Reviews */}
-            <div className="bg-white rounded-lg shadow p-6 col-span-1 md:col-span-2">
+            <div className="bg-purple-50 rounded-lg shadow p-6 ">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-gray-500 text-sm font-medium">
+                <h3 className="text-gray-600 text-sm font-medium">
                   Top Premium Reviews
                 </h3>
                 <div className="bg-purple-100 rounded-full p-2">
@@ -133,7 +124,7 @@ const AdminDashBoardPage = async () => {
                   .map((review: TAdminReview, index: number) => (
                     <div
                       key={index}
-                      className="flex items-center justify-between border-b border-gray-100 pb-3"
+                      className="flex items-center justify-between border-b border-purple-200 pb-3"
                     >
                       <div className="flex-1">
                         <p className="font-medium text-gray-800 truncate">
@@ -175,16 +166,15 @@ const AdminDashBoardPage = async () => {
           </div>
 
           {/* Recent Activity */}
-
-          <div className="bg-white rounded-lg shadow overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-200">
+          <div className="bg-slate-50 rounded-lg shadow overflow-hidden">
+            <div className="px-6 py-4 border-b border-slate-200 bg-slate-100">
               <h3 className="font-medium text-gray-700">Recent Activity</h3>
             </div>
-            <div className="divide-y divide-gray-200">
+            <div className="divide-y divide-slate-200">
               {reviewData?.map((item: TReview, index: number) => (
                 <div
                   key={index}
-                  className="px-6 py-4 flex items-center justify-between"
+                  className="px-6 py-4 flex items-center justify-between bg-slate-25 hover:bg-slate-100 transition-colors"
                 >
                   <div className="flex-1">
                     <div className="flex items-center">
@@ -248,7 +238,7 @@ const AdminDashBoardPage = async () => {
               ))}
             </div>
 
-            <div className="px-6 py-3 bg-gray-50 text-right">
+            <div className="px-6 py-3 bg-slate-100 text-right">
               <button className="text-sm text-indigo-600 font-medium hover:text-indigo-800">
                 View All Activity
               </button>
